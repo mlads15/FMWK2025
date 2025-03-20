@@ -1,2 +1,3 @@
 # FRAMEWORKSITAMAR
-LEROLEROLERO
+
+repositório utilizado para armazenar conteúdos, anotações e atividades de frameworks para desenvolvimento web.
