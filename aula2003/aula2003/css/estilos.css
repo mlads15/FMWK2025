@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Shizuru&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff1f5;
+  transition: background-color 0.5s ease, color 0.5s ease; /*transição suave ao trocar de página*/
+}
+
+header {
+  background-color: #fff1f5;
+  padding: 20px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 1s ease; /*transição suave para quamdo a página for carregada*/
+}
+
+h1 {
+
+  color: #F08CAE;
+  margin: 10px 5px 10px 5px;
+  text-align: center;
+
+}
+
+select {
+
+  margin: 10px 5px 10px 5px;
+  text-align: center;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  
+
+}
+
+div {
+
+background-color: #fff1f5;
+
+}
+
+footer {
+  background-color: #C57B57;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+  opacity: 0;
+  transition: opacity 1s ease; /*transição suave ao carregar a página*/
+}
+
+input {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: border-color 0.3s ease; /*transição suave para os campos do formulário*/
+}
+
+input:focus {
+  border-color: #F1AB86; /*muda a cor da borda ao focar*/
+}
+
+button {
+  padding: 10px;
+  background-color: #ffb0b5;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease; /*transição suave pra o botão*/
+  justify-content: right;
+  display: flex;
+  text-align: right;
+  margin: 10px 5px 10px 5px;
+}
+
+button:hover {
+  background-color: #ffcad4;
+  transform: scale(1.05); /*aumenta quando passa o mouse hehehehe*/
+}
+
+textarea {
+
+  text-align: center;
+  justify-content: center;
+  display: flex;
+
+}
+
+option {
+
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  margin-left: 17%;
+  padding: 17px;
+
+}
+
+#cssArea button {
+
+  justify-content: right;
+  display: flex;
+  text-align: right;
+
+}
+
+#cssArea textarea {
+
+justify-content: right;
+display: flex;
+text-align: right;
+
+}
+
+/*transição da opacidade quando a página carrega*/
+body.loaded header,
+body.loaded section,
+body.loaded footer {
+  opacity: 1;
+}
