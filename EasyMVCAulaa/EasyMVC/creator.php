@@ -140,8 +140,9 @@ EOT;
         <title>Cadastro de {$nomeTabela}</title>
     </head>
     <body>
-        <form>
+        <form action= "../control/{$nomeTabela}Control.php?a=1" method="post">
             {$formCampos}
+            <input type="submit" value= "Gravar">
         </form>
     </body>
 </html>
@@ -185,7 +186,16 @@ EOT;
     function ClassesControl(){
         foreach ($this->tabelas as $tabela) {
             $nomeTabela = array_values((array)$tabela)[0];
+            $atributos=$this->buscaAtributos($nomeTabela);
             $nomeClasse=ucfirst($nomeTabela);
+            $posts="";
+            foreach ($atributos as $atributo) {
+
+                $atributo=$atributo->Field;
+                $posts.= "\$this->{$nomeTabela}->set".ucFirst($atributo)."(\$_POST['{$atributo}'];\n\t\t";
+
+            }
+
             $conteudo = <<<EOT
 <?php
 require_once("../model/{$nomeClasse}.php");
@@ -200,8 +210,23 @@ class {$nomeClasse}Control {
       \$this->acao=\$_GET["a"];
       \$this->verificaAcao(); 
     }
-    function verificaAcao(){}
-    function inserir(){}
+    function verificaAcao(){
+    
+        switch(\$this->acao){
+
+            case 1:
+                \$this->inserir();
+                break;
+
+        }
+    
+    }
+    function inserir(){
+    
+            {$posts}
+            \$this->dao->inserir(\$this->{$nomeTabela});
+    
+    }
     function excluir(){}
     function alterar(){}
     function buscarId({$nomeClasse} \${$nomeTabela}){}
@@ -239,6 +264,34 @@ EOT;
         }
 
         return $zip->close();
+    }
+
+    function ClassesDao() {
+
+        foreach ($this->tabelas as $tabela) {
+
+            $nomeTabela = array_values((array)$tabela)[0];
+            $nomeClasse = ucfirst($nomeTabela);
+            $conteudo = <<<EOT
+
+<?php
+require_once("../model/conexao.php");
+class {$nomeClasse}Dao {
+        private \$con;
+        public function __construc(){
+            \$this->con=new Conexao();
+        }
+        function inserir(\$obj){
+            var_dump(\$obj);
+        }
+
+        }
+
+?>
+EOT;
+
+            file_put_contents("sistema/dao/{$nomeClasse}Dao.php", $conteudo);
+
     }
 
 }
